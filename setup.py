@@ -17,9 +17,10 @@ meta = {}
 
 with io.open('./Butter/version.py', encoding='utf-8') as f:
     exec(f.read(), meta)
+
 setup(
-    name="butter",
-    description="robot base core with python",
+    name="Butter",
+    description="Common library collection",
     long_description=long_description,
     long_description_content_type='text/markdown',
     version=meta['version'],
@@ -28,9 +29,10 @@ setup(
     url="https://github.com/ITJoker233/butter",
     license='MIT',
     keywords=['butter'],
-    packages=['butter','qq robot core','robot'],
+    packages=['butter','easy','quick','bot'],
     install_requires=[
         'requests >= 2.23.0',
+        'opencv-python',
     ],
     entry_points='''
     ''',
