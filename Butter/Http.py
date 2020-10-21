@@ -35,3 +35,22 @@ class Http(object):
 
     def post(self):  # http Post
         return requests.post(url=self.url, params=self.params, data=self.data, headers=self.headers, verify=self.verify)
+
+class ApiServer:
+
+    def __init__(self,apiObject:dict,host='0.0.0.0',port='3333'):
+        self.host = host
+        self.port = port
+        self.apiObject = apiObject
+
+    def run(self):
+        pass
+
+class WebServer:
+
+    def __init__(self,host='0.0.0.0',port='80'):
+        self.host = host
+        self.port = port
+        
+    def run(self):
+        pass
