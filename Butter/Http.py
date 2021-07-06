@@ -1,4 +1,5 @@
 import requests
+from http.server import HTTPServer,CGIHTTPRequestHandler
 
 ''''http 操作类'''
 class Http(object):
@@ -36,21 +37,17 @@ class Http(object):
     def post(self):  # http Post
         return requests.post(url=self.url, params=self.params, data=self.data, headers=self.headers, verify=self.verify)
 
-class ApiServer:
-
-    def __init__(self,apiObject:dict,host='0.0.0.0',port='3333'):
-        self.host = host
-        self.port = port
-        self.apiObject = apiObject
-
-    def run(self):
-        pass
-
 class WebServer:
 
-    def __init__(self,host='0.0.0.0',port='80'):
+    def __init__(self,host='0.0.0.0',port=8080,forbiddenPath=None):
         self.host = host
         self.port = port
-        
+        self.forbiddenPath = forbiddenPath
+        self.client_address = (self.host, self.port)
+        self.request = CGIHTTPRequestHandler
+        self.request.server_version = 'Butter Web Server/1.0'
+        self.request.cgi_directories=[self.forbiddenPath]
+
     def run(self):
-        pass
+        server = HTTPServer(self.client_address,self.request)
+        server.serve_forever()
