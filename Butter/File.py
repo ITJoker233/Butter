@@ -23,6 +23,7 @@ class File(object):
             with self.__open(mode) as file:
                 result = file.read()
         except Exception as identifier:
+            print(identifier)
             return False
         return result
     
@@ -31,6 +32,7 @@ class File(object):
             with self.__open(mode) as file:
                 file.write(data)
         except Exception as identifier:
+            print(identifier)
             return False
         return True
 
@@ -42,16 +44,27 @@ class File(object):
             with self.__open('r') as file:
                 result = file.read()
         except Exception as identifier:
+            print(identifier)
             return False
         return json.loads(result)
 
-    def base64(self):
+    def b64encode(self):
         try:
             with self.__open('rb') as file:
                 result = file.read()
         except Exception as identifier:
+            print(identifier)
             return False
-        return base64.b64encode(result).decode()
+        return base64.b64encode(result).decode(self.encoding)
+    
+    def b64decode(self):
+        try:
+            with self.__open('r') as file:
+                result = file.read()
+        except Exception as identifier:
+            print(identifier)
+            return False
+        return base64.b64decode(result).decode(self.encoding)
 
     ''''获取指定目录下的指定格式的所有文件'''
     def getFiles(self, format_): return [i.split('.')[0] for i in os.listdir(self.filePath)if i.endswith(f'.{format_}')]
