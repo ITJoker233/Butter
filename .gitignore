@@ -132,3 +132,4 @@ dmypy.json
 Butter/test.py
 Butter/Bot/test.py
 Butter/*.jpg
+Butter/*.mp4
