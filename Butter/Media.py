@@ -66,7 +66,7 @@ class Image:
                     maxArea = area
                     ci = i
             largest_contour = contours[ci]
-        return cv.drawContours(image=self.image,contours=largest_contour,contourIdx=-1,color=color,thickness=tickness)
+        return cv.drawContours(image=self.image,contours=largest_contour,contourIdx=-1,color=color,thickness=tickness),largest_contour
     
     def detectHands(self,image=None,lower=None,upper=None,color=(0,255,0),tickness=2):
         if image is not None:
