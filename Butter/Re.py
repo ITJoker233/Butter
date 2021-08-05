@@ -52,10 +52,10 @@ def isIdCard(text):
 def isUrl(text):
     return match(Pattern().Url,text)
 
-def isIpAddress()
+def isIpAddress():
     return match(Pattern().IpAddress,text)
 
-def checkUsername(text)
+def checkUsername(text):
     return match(Pattern().Username,text)
 
 def checkPassword(text):
